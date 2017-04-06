@@ -1,0 +1,156 @@
+header {
+/*    background-image: url(images/banner.jpg);
+   background-image: url(images/meal.jpg);*/
+   background-image: url(images/meal12.jpeg);
+
+
+  height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+   
+    min-height: 670px;
+    width: 100%;
+  /*  margin-top: -60px;*/
+}
+
+html {
+	font-family: 'Josefin Slab', serif;
+	font-size: 1.5em; 
+
+}
+/*form {
+    text-align: center;
+    padding: 1rem;
+    background: none;
+    width: 50%;
+    margin: 0 auto;
+}*/
+
+nav img {
+	height: 100px;
+    width: 100px;
+    background-color: turquoise;
+    border-radius: 50%;
+    margin: 1em;
+}
+
+.center-content {
+    margin: 0 auto;
+    /* max-width: 500px; */
+    position: relative;
+    /*transform: translateY(20em);*/
+    top: 55%;
+    width: 50%;
+    text-align: center;
+    color: #ffffff;
+
+}
+
+.center-content p {
+	font-size: 2em;
+	padding: 1em;
+}
+
+input {
+	color:#000;
+	margin:1em;
+}
+
+footer {
+    clear: both;
+    background-color: #252422;
+    color: white;
+    padding: 1.25rem;
+}
+
+.ind_recipe {
+	display:inline;
+	text-align: center;
+
+
+}
+
+.recipe_img {
+	height:150px;
+	width:150px;
+	margin: 0 auto;
+    display: block;
+}
+
+.recipeCard {
+
+	display:inline;
+	margin-left:1em;
+}
+
+.recipe-content {
+	width:31%;
+	display:inline-block;
+/*display:flex;*/
+	margin: 0 auto;
+	border: 1px #000000 solid;
+	    margin: 1em;
+    padding-bottom: 1em;
+
+}
+
+.recipe-content h5 {
+	font-size: 1.25em;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin: 0 auto;
+    padding: 1.2em;
+}
+
+
+
+h1 {
+	font-family: 'Lobster', cursive;
+	font-size: 4rem;
+	text-shadow: 0.02em 0.02em #000000;
+
+}
+
+#menu-section {
+	flex-direction: row;
+    flex-wrap: wrap;
+	display:flex;
+	/*overflow: hidden;
+	width:100%;*/
+}
+/*.container {
+	overflow:hidden;
+	width:100%;
+}*/
+
+.card {
+	width: 10rem;
+    border: 1px solid #000000;
+  /*  padding: 2em;*/
+    margin: 1em 0;
+  /*  padding-bottom: 500em;
+  margin-bottom: -500em;*/
+   /* flex:2;*/
+}
+
+
+.card {
+    width: 20%;
+    border: 1px solid #000000;
+    /* padding: 2em; */
+    margin: 1em 1em;
+    /* top: -10px; */
+    display: inline-block;
+   
+  }
+
+.card-img-top {
+width: 100%;
+height:157px;
+    
+}
+
+.btn-primary{
+	margin: .5em;
+}
