@@ -18,13 +18,10 @@ html {
 	font-size: 1.5em; 
 
 }
-/*form {
-    text-align: center;
-    padding: 1rem;
-    background: none;
-    width: 50%;
-    margin: 0 auto;
-}*/
+
+body {
+    font-family: 'Josefin Slab', serif;
+}
 
 nav img {
 	height: 100px;
@@ -54,6 +51,7 @@ nav img {
 input {
 	color:#000;
 	margin:1em;
+    background-color:#ffffff;
 }
 
 footer {
@@ -116,22 +114,19 @@ h1 {
 	flex-direction: row;
     flex-wrap: wrap;
 	display:flex;
-	/*overflow: hidden;
-	width:100%;*/
+    margin-left: 10%;
+	
 }
-/*.container {
-	overflow:hidden;
-	width:100%;
-}*/
+
 
 .card {
 	width: 10rem;
     border: 1px solid #000000;
-  /*  padding: 2em;*/
+
     margin: 1em 0;
-  /*  padding-bottom: 500em;
-  margin-bottom: -500em;*/
-   /* flex:2;*/
+  
+   position: relative;
+    padding-bottom: 2.5em;
 }
 
 
@@ -139,11 +134,12 @@ h1 {
     width: 20%;
     border: 1px solid #000000;
     /* padding: 2em; */
-    margin: 1em 1em;
+    margin: 1em .5em;
     /* top: -10px; */
     display: inline-block;
-   
-  }
+    position: relative;
+    padding-bottom: 2.5em;
+}
 
 .card-img-top {
 width: 100%;
@@ -152,5 +148,45 @@ height:157px;
 }
 
 .btn-primary{
-	margin: .5em;
+
+    margin: .5em;
+    margin-top: 10px;
+    position: absolute;
+  
+    bottom: -2;
+    display: block;
+
+}
+
+.btn {
+     background-color: turquoise;
+}
+
+.row {
+
+    margin-right: 0px; 
+    margin-left: 0px; 
+
+}
+
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+
+    }
+
+.fa {
+
+    margin-bottom: 1.5em;
+
 }

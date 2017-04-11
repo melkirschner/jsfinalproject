@@ -1,4 +1,6 @@
 // Initialize Firebase
+
+
   var config = {
     apiKey: "AIzaSyAo1RtFfqN_ljDqg1vC3gBPWPbLazkL6YA",
     authDomain: "final-project-2722d.firebaseapp.com",
@@ -12,46 +14,42 @@
     
 $(document).ready(function() {
   $('button').on('click', function(){
+//scroll down to recipe section
+    $('html,body').animate({
+        scrollTop: $(".row").offset().top},
+        'slow');
+
       var search = $('.testing').val();
       console.log(search);
     function getRecipes() {
- 
- var search1 = $('#message').val();
-    var url = 'http://food2fork.com/api/search?key=1ca4c4883a96c79f678837c74a19f9cf&q='+search1;
-        // var url = 'http://food2fork.com/api/search?key=1ca4c4883a96c79f678837c74a19f9cf&q=pork';
-    // $('button').on('click', function(){
-                  console.log(search);
-                   var search1 = $('#message').val();
-                   // alert(search1);
-                  // console.log(response);
+ //call search API to search recipe database
+          var search1 = $('#message').val();
+          var url = 'http://food2fork.com/api/search?key=1ca4c4883a96c79f678837c74a19f9cf&q='+search1;
+          console.log(url.recipes);
+           console.log(search);
+           var search1 = $('#message').val();
                
     callRecipeApi(url);
-    // $('#redditSource').on('click', function() {
-    //   $('#main').empty();
-    //   callRedditApi(url);
-    // });
-  }
 
-  function callRecipeApi(url) {
-     console.log(search);
-    $.ajax({
+    }
 
-      url : url,
-      success: function(response) {
-                appendRecipes(response);
-                // var object= JSON.parse(response);
-                // console.log(object);
+    function callRecipeApi(url) {
+       console.log(search);
+      $.ajax({
 
-      }
-    });
-  } 
+        url : url,
+        crossDomain:true,
+        success: function(response) {
+                  appendRecipes(response);
+             
+
+          }
+      });
+    } 
   getRecipes();
-     });
+  });
 
-  //slick 
 
-  
-  //
 
   function appendRecipes(response) {
     console.log("testing");
@@ -59,61 +57,62 @@ $(document).ready(function() {
     var recipeObject = newObject.recipes;
     console.log(newObject);
     console.log(recipeObject);
-  //    $('.slick-container').slick({
-  //   // centerMode: true,
-  //   // centerPadding: '60px',
-  //   // slidesToShow: 3,
-  //   arrows: true,
-  //   autoplay:true,
-  //   dots: true
-  //   // focusOnSelect: true,
-  //   // asNavFor: '.slider-for',
-  // //   responsive: [
-  // //   {
-  // //     breakpoint: 768,
-  // //     settings: {
-  // //       // arrows: false,
-  // //       // centerMode: true,
-  // //       // centerPadding: '40px',
-  // //       slidesToShow: 1
-  // //     }
-  // //   },
-  // //   {
-  // //     breakpoint: 480,
-  // //     settings: {
-  // //       // arrows: false,
-  // //       // centerMode: true,
-  // //       // centerPadding: '40px',
-  // //       slidesToShow: 1
-  // //     }
-  // //   }
-  // // ]
-  // });
+//function to append recipe cards to DOM
     $.each(recipeObject, function(i, item){
+      var recipeId = item.recipe_id;
+      console.log(recipeId);
+       var getUrl = 'http://food2fork.com/api/get?key=1ca4c4883a96c79f678837c74a19f9cf&rId='+recipeId;
+       console.log(getUrl);
+      
+
+       $.getJSON( getUrl, function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          // console.log(key, val, data);
+          items.push(val.ingredients)
+
+          for( i=0; i<items.length; i++ )
+            {
+          // console.log(items[i].join('\n'));
+          var list12 = items[i].join('\n');
+          // console.log(list);
+        var list = '<ul class="myList collapse" id="collapseExample"><li class="ui-menu-item">' + items[i].join('</li><li>') + '</li></ul>';
+// console.log(list12);
+            }
+      
+
+
 
       var recipeCard = $('<div class="card"></div>');
-      var recipeImage = $('<img class="card-img-top" alt="Card image cap" src="'+item.image_url+'">');
-      var cardBlock = $('<div class="card-block"><h4 class="card-title">'+item.title+'</h4><a href="'+item.source_url+'" class="btn btn-primary">Get Recipe</a></div>');
+  
+      var recipeImage = $('<img class="card-img-top" alt="Card image cap" src="'+val.image_url+'">');
+      // var cardBlock = $('<div class="card-block"><h4 class="card-title">'+val.title+'</h4><p>'+val.ingredients+'<br/>'+'</p><a href="'+val.source_url+'" class="btn btn-primary">Get Recipe</a></div>');
+      // var cardBlock = $('<div class="card-block"><h4 class="card-title">'+val.title+'</h4><i class="fa fa-cutlery" aria-hidden="true"></i><a href="'+val.source_url+'" class="btn btn-primary">Get Recipe</a></div>');
+      var cardBlock = $('<div class="card-block"><h4 class="card-title">'+val.title+'</h4><i class="fa fa-cutlery"></i>'+list+'<a href="'+val.source_url+'" class="btn btn-primary">Get Recipe</a></div>');
+
+
+      // var seeMore = $('<i class="fa fa-cutlery" aria-hidden="true"></i>')
       $('#menu-section').append(recipeCard);
       $(recipeCard).append(recipeImage, cardBlock);
 
-      // var recipeBlock = $('<section class="recipeCard"></section>');
-      // var article =$('<article class="recipe-content"></article>');
-      // var title = $('<a href = "'+item.source_url+'><div class="ind_recipe"><h5>'+item.title+'</h5> <img class="recipe_img" src="'+item.image_url+'"></div></a>');
-      // $(article).append(title);
-      // $(recipeBlock).append(article);
-      // $('#menu-section').append(recipeBlock);
-      // $('.slick-container').append(recipeBlock);
-      // console.log(recipeObject);
-      // console.log(item.title);
-      // console.log(item.source_url);
-      // console.log(item.image_url);
-      // console.log(item.social_rank);
-      // console.log(f2f_url);
+      $('.fa-cutlery').on('click', function(){
+       // if($('.myList', this).hasClass('collapse')){
+         // $(this).closest('.myList').toggleClass('collapse');
+        // $(this).siblings('.myList').toggleClass('collapse');
+        $(this).closest('.card-block').find('.myList').toggleClass('collapse');
+
+
+         //maybe change this to closest/find
+        //   $('.myList', this).removeClass('collapse');
+        // }else{
+          // $('.myList', this).addClass('collapse')
+          // }
+      });
+        });
+        });
     });
-       // console.log(recipeBlock);
-    // console.log(recipeObject);
-  }
+  
+  };
 
 
   $('#message-form').submit(function (event) {
